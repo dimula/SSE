@@ -20,9 +20,9 @@ namespace SSE
                 {
                     LimitToAuthenticatedUsers = false,
                     NotifyChannelOfSubscriptions = false,
-                    OnConnect = (arg1, arg2) =>{},
-                    OnSubscribe = obj =>{},
-                    OnUnsubscribe = obj =>{},
+                    //OnConnect = (arg1, arg2) =>{},
+                    //OnSubscribe = obj =>{},
+                    //OnUnsubscribe = obj =>{},
                 });
             }
         }

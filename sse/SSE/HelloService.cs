@@ -18,25 +18,11 @@ namespace SSE
     {
         public string Result { get; set; }
     }
-    [Route("/send")]
-    public class Message
-    {
-        public string Text { get; set; }
-    }
-    public class MessageResponse
-    {
-        public string Result { get; set; }
-    }
     public class HelloService : Service
     {
-        public object Get(Hello request)
+        public object Any(Hello request)
         {
             return new HelloResponse { Result = "Hello, " + request.Name };
-        }
-
-        public object Post(Message message)
-        {
-            return new MessageResponse(){Result = "Ok"};
         }
     }
 }

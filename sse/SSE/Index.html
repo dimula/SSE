@@ -3,17 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <title>ServiceStack SEE Issue Reproducer</title>
+    
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Scripts/eventsource.js"></script>
+    <script src="Scripts/ss-utils.js"></script>
 </head>
 <body>
     <h1>ServiceStack SEE Issue Reproducer</h1>
     <button type="button" onclick="ssRequest()">Request SS</button>
     <p id="demo"></p>
-
-    <button>Send SSE</button>
-
-    <script src="/SSE/Scripts/jquery-2.1.1.min.js"></script>
-    <script src="/SSE/Scripts/eventsource.js"></script>
-    <script src="/SSE/Scripts/ss-utils.js"></script>
+    
     <script>
         function ssRequest() {
             var xhttp = new XMLHttpRequest();
@@ -39,9 +38,6 @@
                     },
                     onStop: function () {
                         console.log("onStop: url=" + this.url);
-                    },
-                    selected_case_updates: function (message, e) {
-                        console.log(message);
                     },
                     stopListening: function () {
                         console.log("stopListening");
