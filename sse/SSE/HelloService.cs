@@ -20,9 +20,17 @@ namespace SSE
     }
     public class HelloService : Service
     {
-        public object Any(Hello request)
+        private static int counter = 0;
+        public IServerEvents ServerEvents { get; set; }
+
+        public object Get(Hello request)
         {
-            return new HelloResponse { Result = "Hello, " + request.Name };
+           return new HelloResponse { Result = "Hello, " + request.Name};
+        }
+        public void Post(Hello request)
+        {
+            var ssid = this.Request.Cookies["ss-id"];
+            this.ServerEvents.NotifySession(ssid.Value, "cmd.myselector", counter++, "autoupdate");
         }
     }
 }

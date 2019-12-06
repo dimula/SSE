@@ -12,6 +12,8 @@
     <h1>ServiceStack SEE Issue Reproducer</h1>
     <button type="button" onclick="ssRequest()">Request SS</button>
     <p id="demo"></p>
+    <button type="ssebtn" onclick="sendMessage()">Send SSE Message</button>
+    <p id="message"></p>
     
     <script>
         function ssRequest() {
@@ -22,6 +24,12 @@
                 }
             };
             xhttp.open("GET", "hello?name=test_name&t=" + Math.random(), true);
+            xhttp.send();
+        }
+
+        function sendMessage() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "hello?name=test_message&t=" + Math.random(), true);
             xhttp.send();
         }
 
@@ -41,15 +49,26 @@
                     },
                     stopListening: function () {
                         console.log("stopListening");
-                    }
+                    },
+                    onMessage: function(message) {
+                        console.log("onMessage: " + message);
+                    },
+                    myselector: function(message) {
+                        console.log("myselector: " + message);
+                        document.getElementById("message").innerHTML = "counter: "+message;
+                    } 
                 },
                 success: function (selector, msg, json) {
+                    console.log("success: ");
                     console.log(selector, msg, json);
                 }
             });
         }
 
         createSubscription();
+
+        setInterval(sendMessage, 100);
+        setInterval(ssRequest, 100);
 
     </script>
 

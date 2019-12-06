@@ -726,7 +726,7 @@
                                 return;
                             }
                             $.ss.mycounter += 1;
-                            //$.ss.mycounter = 1;
+                            $.ss.mycounter = 1;
                             $.ajax({
                                 type: "POST",
                                 url: ($.ss.mycounter % 2==1) ? opt.heartbeatUrl : opt.heartbeatUrl + "_!!!!_"+$.ss.mycounter,
