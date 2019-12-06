@@ -4,9 +4,9 @@
     <meta charset="utf-8" />
     <title>ServiceStack SEE Issue Reproducer</title>
     
-    <script src="Scripts/jquery-2.1.1.min.js"></script>
-    <script src="Scripts/eventsource.js"></script>
-    <script src="Scripts/ss-utils.js"></script>
+    <script src="/SSE/Scripts/jquery-2.1.1.min.js"></script>
+    <script src="/sse/Scripts/eventsource.js"></script>
+    <script src="/sse/Scripts/ss-utils.js"></script>
 </head>
 <body>
     <h1>ServiceStack SEE Issue Reproducer</h1>
@@ -23,13 +23,13 @@
                     document.getElementById("demo").innerHTML = this.responseText;
                 }
             };
-            xhttp.open("GET", "hello?name=test_name&t=" + Math.random(), true);
+            xhttp.open("GET", "sse/hello?name=test_name&t=" + Math.random(), true);
             xhttp.send();
         }
 
         function sendMessage() {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "hello?name=test_message&t=" + Math.random(), true);
+            xhttp.open("POST", "sse/hello?name=test_message&t=" + Math.random(), true);
             xhttp.send();
         }
 
